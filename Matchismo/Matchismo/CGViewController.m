@@ -32,29 +32,24 @@
     NSLog(@"flipCount changed to %lu", self.flipCount);
 }
 
-- (IBAction)touchCardButton:(UIButton *)button
+- (void)flipCardButton:(UIButton *)button
+              withCard:(CGCard *)card
 {
-    if ([button.currentTitle length])
-    {
-        [button setBackgroundImage:[UIImage imageNamed:@"card_back"]
+    if (card || [button.currentTitle length]) { // Has next card
+        [button setBackgroundImage:[UIImage imageNamed:(card ? @"card_front" : @"card_back")]
                           forState:UIControlStateNormal];
-        [button setTitle:@"" forState:UIControlStateNormal];
+        [button setTitle:card.contents forState:UIControlStateNormal];
         self.flipCount++;
     }
-    else
-    {
-        CGCard * playingCard = [self.deck drawRandomCard];
-        if (playingCard) {
-            [button setBackgroundImage:[UIImage imageNamed:@"card_front"]
-                              forState:UIControlStateNormal];
-            [button setTitle:playingCard.contents forState:UIControlStateNormal];
-            self.flipCount++;
-        }
-        else {
-            // All cards were drawn - disable button
-            [button setEnabled:NO];
-        }
+    else {
+        [button setEnabled:NO];
     }
+}
+
+- (IBAction)touchCardButton:(UIButton *)button
+{
+    [self flipCardButton:button
+                withCard:([button.currentTitle length] ? nil : [self.deck drawRandomCard])];
 }
 
 @end

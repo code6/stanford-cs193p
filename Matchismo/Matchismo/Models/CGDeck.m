@@ -22,7 +22,8 @@
     return _cards;
 }
 
-- (void)addCard:(CGCard *)card atTop:(BOOL)atTop
+- (void)addCard:(CGCard *)card
+          atTop:(BOOL)atTop
 {
     if (atTop) {
         [self.cards insertObject:card atIndex:0];
