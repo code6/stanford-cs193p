@@ -3,6 +3,8 @@ stanford-cs193p
 
 This repository contains my work done for the classes, demos and assignments of the Stanford course "Developing iOS 7 Apps for iPhone and iPad" a.k.a. CS193p (Fall 2013-2014).
 
+*Requires Xcode 5.0+*
+
 ### Stanford CS193p - Developing iOS 7 Apps for iPhone and iPad
 *by [Paul Hegarty](http://online.stanford.edu/instructors/paul-hegarty)*
 
