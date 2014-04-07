@@ -7,23 +7,54 @@
 //
 
 #import "CGViewController.h"
+#import "CGPlayingCardDeck.h"
 
 @interface CGViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel * flipsLabel;
+@property (nonatomic) NSUInteger flipCount;
+@property (strong, nonatomic) CGPlayingCardDeck * deck;
 
 @end
 
 @implementation CGViewController
 
-- (void)viewDidLoad
+- (CGPlayingCardDeck *)deck
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    if (!_deck) _deck = [[CGPlayingCardDeck alloc] init];
+    return _deck;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)setFlipCount:(NSUInteger)flipCount
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %lu", (unsigned long)flipCount];
+    NSLog(@"flipCount changed to %lu", self.flipCount);
+}
+
+- (IBAction)touchCardButton:(UIButton *)button
+{
+    if ([button.currentTitle length])
+    {
+        [button setBackgroundImage:[UIImage imageNamed:@"card_back"]
+                          forState:UIControlStateNormal];
+        [button setTitle:@"" forState:UIControlStateNormal];
+        self.flipCount++;
+    }
+    else
+    {
+        CGPlayingCard * playingCard = (CGPlayingCard *)[self.deck drawRandomCard];
+        if (playingCard) {
+            [button setBackgroundImage:[UIImage imageNamed:@"card_front"]
+                              forState:UIControlStateNormal];
+            [button setTitle:playingCard.contents forState:UIControlStateNormal];
+            self.flipCount++;
+        }
+        else {
+            // All cards were drawn - disable button
+            [button setEnabled:NO];
+        }
+    }
 }
 
 @end

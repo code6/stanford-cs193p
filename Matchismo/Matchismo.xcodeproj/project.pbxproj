@@ -21,6 +21,10 @@
 		7D409DDB18F2088F0030C4D3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D409DBD18F2088E0030C4D3 /* UIKit.framework */; };
 		7D409DE318F2088F0030C4D3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D409DE118F2088F0030C4D3 /* InfoPlist.strings */; };
 		7D409DE518F2088F0030C4D3 /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D409DE418F2088F0030C4D3 /* MatchismoTests.m */; };
+		7DC9555518F21F2B009E3093 /* CGCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9555418F21F2B009E3093 /* CGCard.m */; };
+		7DC9555818F22013009E3093 /* CGPlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9555718F22013009E3093 /* CGPlayingCard.m */; };
+		7DC9555B18F2240E009E3093 /* CGDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9555A18F2240E009E3093 /* CGDeck.m */; };
+		7DC9555E18F225A9009E3093 /* CGPlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC9555D18F225A9009E3093 /* CGPlayingCardDeck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		7D409DE018F2088F0030C4D3 /* MatchismoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MatchismoTests-Info.plist"; sourceTree = "<group>"; };
 		7D409DE218F2088F0030C4D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7D409DE418F2088F0030C4D3 /* MatchismoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchismoTests.m; sourceTree = "<group>"; };
+		7DC9555318F21F2B009E3093 /* CGCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGCard.h; sourceTree = "<group>"; };
+		7DC9555418F21F2B009E3093 /* CGCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGCard.m; sourceTree = "<group>"; };
+		7DC9555618F22013009E3093 /* CGPlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPlayingCard.h; sourceTree = "<group>"; };
+		7DC9555718F22013009E3093 /* CGPlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPlayingCard.m; sourceTree = "<group>"; };
+		7DC9555918F2240E009E3093 /* CGDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGDeck.h; sourceTree = "<group>"; };
+		7DC9555A18F2240E009E3093 /* CGDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGDeck.m; sourceTree = "<group>"; };
+		7DC9555C18F225A9009E3093 /* CGPlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPlayingCardDeck.h; sourceTree = "<group>"; };
+		7DC9555D18F225A9009E3093 /* CGPlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPlayingCardDeck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +124,7 @@
 		7D409DBF18F2088E0030C4D3 /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				7DC9555218F21EF9009E3093 /* Models */,
 				7D409DC818F2088E0030C4D3 /* CGAppDelegate.h */,
 				7D409DC918F2088E0030C4D3 /* CGAppDelegate.m */,
 				7D409DCB18F2088E0030C4D3 /* Main.storyboard */,
@@ -150,6 +163,21 @@
 				7D409DE118F2088F0030C4D3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7DC9555218F21EF9009E3093 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7DC9555318F21F2B009E3093 /* CGCard.h */,
+				7DC9555418F21F2B009E3093 /* CGCard.m */,
+				7DC9555618F22013009E3093 /* CGPlayingCard.h */,
+				7DC9555718F22013009E3093 /* CGPlayingCard.m */,
+				7DC9555918F2240E009E3093 /* CGDeck.h */,
+				7DC9555A18F2240E009E3093 /* CGDeck.m */,
+				7DC9555C18F225A9009E3093 /* CGPlayingCardDeck.h */,
+				7DC9555D18F225A9009E3093 /* CGPlayingCardDeck.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +278,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DC9555B18F2240E009E3093 /* CGDeck.m in Sources */,
+				7DC9555818F22013009E3093 /* CGPlayingCard.m in Sources */,
 				7D409DCA18F2088E0030C4D3 /* CGAppDelegate.m in Sources */,
 				7D409DC618F2088E0030C4D3 /* main.m in Sources */,
+				7DC9555E18F225A9009E3093 /* CGPlayingCardDeck.m in Sources */,
 				7D409DD018F2088E0030C4D3 /* CGViewController.m in Sources */,
+				7DC9555518F21F2B009E3093 /* CGCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +489,7 @@
 				7D409DEA18F2088F0030C4D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7D409DEB18F2088F0030C4D3 /* Build configuration list for PBXNativeTarget "MatchismoTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +498,7 @@
 				7D409DED18F2088F0030C4D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
