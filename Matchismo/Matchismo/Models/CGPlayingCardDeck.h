@@ -7,7 +7,6 @@
 //
 
 #import "CGDeck.h"
-#import "CGPlayingCard.h"
 
 @interface CGPlayingCardDeck : CGDeck
 

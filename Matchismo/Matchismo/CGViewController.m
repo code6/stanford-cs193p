@@ -43,7 +43,7 @@
     }
     else
     {
-        CGPlayingCard * playingCard = (CGPlayingCard *)[self.deck drawRandomCard];
+        CGCard * playingCard = [self.deck drawRandomCard];
         if (playingCard) {
             [button setBackgroundImage:[UIImage imageNamed:@"card_front"]
                               forState:UIControlStateNormal];
