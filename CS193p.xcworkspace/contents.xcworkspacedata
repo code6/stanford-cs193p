@@ -1,7 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:Matchismo/Matchismo.xcodeproj">
-   </FileRef>
+   <Group
+      location = "group:Assignment1"
+      name = "Assignment1">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 1.pdf">
+      </FileRef>
+      <FileRef
+         location = "group:Matchismo/Matchismo.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Assignment2"
+      name = "Assignment2">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 2.pdf">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Assignment3"
+      name = "Assignment3">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 3.pdf">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Assignment4"
+      name = "Assignment4">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 4.pdf">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Assignment5"
+      name = "Assignment5">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 5.pdf">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Assignment6"
+      name = "Assignment6">
+      <FileRef
+         location = "group:Developing iOS 7 Apps_ Assignment 6.pdf">
+      </FileRef>
+   </Group>
 </Workspace>
