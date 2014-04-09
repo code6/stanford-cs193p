@@ -29,7 +29,7 @@
 {
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %lu", (unsigned long)flipCount];
-    NSLog(@"flipCount changed to %lu", self.flipCount);
+    NSLog(@"flipCount changed to %lu", (unsigned long)self.flipCount);
 }
 
 - (void)flipCardButton:(UIButton *)button
