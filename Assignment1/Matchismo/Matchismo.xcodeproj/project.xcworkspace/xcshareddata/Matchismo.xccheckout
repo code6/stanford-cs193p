@@ -5,20 +5,20 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>32CEEF67-C598-40D9-AD23-EDA58A26F5F9</string>
+	<string>2D441A71-D811-4B38-8A13-865006BD5F09</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CS193p</string>
+	<string>Matchismo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>15382A06-B4BC-4FB4-A9AC-030173A74764</key>
 		<string>https://github.com/jobertsa/stanford-cs193p.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CS193p.xcworkspace</string>
+	<string>Assignment1/Matchismo/Matchismo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>15382A06-B4BC-4FB4-A9AC-030173A74764</key>
-		<string>..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/jobertsa/stanford-cs193p.git</string>
