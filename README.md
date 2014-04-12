@@ -3,12 +3,13 @@ stanford-cs193p
 
 This repository contains my work done for the classes, demos and assignments of the Stanford's course "Developing iOS 7 Apps for iPhone and iPad" a.k.a. CS193p (Fall 2013-2014).
 
-*Requires Xcode 5.0+*
+*Requires Xcode 5.0+ and iOS 6.0+*
 
 ### My solutions
 ##### [Assignment 1](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%201.pdf?raw=true) - [Solution](../tree/master/Assignment1/Matchismo)
 ![Screenshot of Assignment 1 solution](https://raw.githubusercontent.com/jobertsa/stanford-cs193p/master/Resources/Assignment1.png "Screenshot of Assignment 1 solution")
-##### [Assignment 2](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%202.pdf?raw=true)
+##### [Assignment 2](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%202.pdf?raw=true) - [Solution](../tree/master/Assignment2/Matchismo)
+![Screenshot of Assignment 2 solution](https://raw.githubusercontent.com/jobertsa/stanford-cs193p/master/Resources/Assignment2.png "Screenshot of Assignment 2 solution")
 ##### [Assignment 3](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%203.pdf?raw=true)
 ##### [Assignment 4](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%204.pdf?raw=true)
 ##### [Assignment 5](../blob/master/Assignment1/Developing%20iOS%207%20Apps_%20Assignment%205.pdf?raw=true)
