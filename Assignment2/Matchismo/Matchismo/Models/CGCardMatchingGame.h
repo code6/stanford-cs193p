@@ -19,6 +19,14 @@
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (CGCard *)cardAtIndex:(NSUInteger)index;
 
+@property (nonatomic, readonly) NSInteger pointsForLastMove;
 @property (nonatomic, readonly) NSInteger score;
+//@property (nonatomic, readonly) NSString * result
+/*
+ * 2 for 2-card match
+ * 3 for 3-card match
+ * Other values will be ignored
+ */
+@property (nonatomic) NSUInteger matchMode;
 
 @end

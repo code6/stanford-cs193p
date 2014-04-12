@@ -20,6 +20,11 @@
         } else if ([otherCard.suit isEqualToString:self.suit]) {
             score = 1;
         }
+    } else {
+        CGPlayingCard * firstOfOtherCards = [otherCards firstObject];
+        NSMutableArray * mutableOtherCards = [NSMutableArray arrayWithArray:otherCards];
+        [mutableOtherCards removeObject:firstOfOtherCards];
+        return [self match:@[firstOfOtherCards]] + [self match:mutableOtherCards] + [firstOfOtherCards match:mutableOtherCards];
     }
     return score;
 }

@@ -10,6 +10,7 @@
 
 @interface CGCardMatchingGame()
 
+@property (nonatomic, readwrite) NSInteger pointsForLastMove;
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray * cards; // of CGCard
 
@@ -45,12 +46,13 @@
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
-static const int MISMATCH_PENALTY = 2;
+static const int MISMATCH_PENALTY = 1;
 static const int MATCH_BONUS = 4;
-static const int COST_TO_CHOSE = 1;
+static const int COST_TO_CHOOSE = 1;
 
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
+    self.pointsForLastMove = 0;
     CGCard * card = [self cardAtIndex:index];
     
     if (!card.isMatched) {
@@ -58,23 +60,33 @@ static const int COST_TO_CHOSE = 1;
             card.chosen = NO;
         } else {
             // match against other chosen cards
+            NSMutableArray * chosenCards = [[NSMutableArray alloc] init];
             for (CGCard * otherCard in self.cards) {
                 if (otherCard.isChosen && !otherCard.isMatched) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        self.score += matchScore * MATCH_BONUS;
-                        otherCard.matched = YES;
-                        card.matched = YES;
-                    } else {
-                        self.score -= MISMATCH_PENALTY;
-                        otherCard.chosen = NO;
-                    }
-                    break;
+                    [chosenCards addObject:otherCard];
+                    if ([chosenCards count] == (self.matchMode - 1)) break;
                 }
             }
-            self.score -= COST_TO_CHOSE;
+            if ([chosenCards count] == (self.matchMode - 1)) {
+                int matchScore = [card match:chosenCards];
+                card.matched = matchScore;
+                for (CGCard * chosenCard in chosenCards) {
+                    chosenCard.matched = matchScore;
+                    chosenCard.chosen = matchScore;
+                }
+                self.pointsForLastMove = matchScore ? (matchScore * MATCH_BONUS) : (self.matchMode * -MISMATCH_PENALTY);
+                self.score += self.pointsForLastMove;
+            }
+            self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
         }
+    }
+}
+
+- (void)setMatchMode:(NSUInteger)matchMode
+{
+    if (matchMode == 2 || matchMode == 3) {
+        _matchMode = matchMode;
     }
 }
 
