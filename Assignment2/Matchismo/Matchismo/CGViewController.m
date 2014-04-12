@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *matchModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (strong, nonatomic) NSMutableString * chosenCardsContents;
-@property (weak, nonatomic) CGCard * lastCardChosen;
+@property (weak, nonatomic) CGCard * currentChosenCard;
 
 @end
 
@@ -73,7 +73,7 @@
 
 - (void)updateUI
 {
-    self.resultLabel.text = [self titleForResultOfLastMove];
+    self.resultLabel.text = [self titleForResultOfCurrentMove];
     for (UIButton * cardButton in self.cardButtons) {
         NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         CGCard * card = [self.game cardAtIndex:cardButtonIndex];
@@ -94,7 +94,7 @@
     return [UIImage imageNamed:card.isChosen ? @"card_front" : @"card_back"];
 }
 
-- (NSString *)titleForResultOfLastMove
+- (NSString *)titleForResultOfCurrentMove
 {
     NSString * result = @"";
     NSMutableArray * chosenCards = [[NSMutableArray alloc] init];
@@ -106,23 +106,26 @@
         }
     }
     if ([chosenCards count]) {
-        if (!self.game.pointsForLastMove) self.chosenCardsContents = nil;
+        // Clear and add chosen cards. So, in case user deselect a card, it'll be consistent
+        if (!self.game.pointsForCurrentMove) self.chosenCardsContents = nil;
         for (CGCard * card in chosenCards) {
             if ([self.chosenCardsContents rangeOfString:card.contents].location == NSNotFound) {
                 [self.chosenCardsContents appendFormat:@" %@", card.contents];
-                self.lastCardChosen = card;
+                self.currentChosenCard = card;
             }
         }
         result = self.chosenCardsContents;
-        if (self.game.pointsForLastMove > 0) {
-            result = [NSString stringWithFormat:@"Matched %@ for %ld points!", self.chosenCardsContents, (long)self.game.pointsForLastMove];
+        if (self.game.pointsForCurrentMove > 0) {
+            result = [NSString stringWithFormat:@"Matched %@ for %ld points!", self.chosenCardsContents, (long)self.game.pointsForCurrentMove];
             self.chosenCardsContents = nil;
         }
-        else if (self.game.pointsForLastMove < 0) {
-            result = [NSString stringWithFormat:@"%@ don't match! Penalty: %ld points", self.chosenCardsContents, (long)self.game.pointsForLastMove];
-            self.chosenCardsContents = self.lastCardChosen.contents.mutableCopy;
+        else if (self.game.pointsForCurrentMove < 0) {
+            result = [NSString stringWithFormat:@"%@ don't match! Penalty: %ld points", self.chosenCardsContents, (long)self.game.pointsForCurrentMove];
+            // Because it was cleared, so put the current chosen card back there
+            self.chosenCardsContents = self.currentChosenCard.contents.mutableCopy;
         }
     }
+    // If there's no card chosen, then clear the label
     return result;
 }
 

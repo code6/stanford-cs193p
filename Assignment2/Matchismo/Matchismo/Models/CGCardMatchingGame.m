@@ -10,7 +10,7 @@
 
 @interface CGCardMatchingGame()
 
-@property (nonatomic, readwrite) NSInteger pointsForLastMove;
+@property (nonatomic, readwrite) NSInteger pointsForCurrentMove;
 @property (nonatomic, readwrite) NSInteger score;
 @property (nonatomic, strong) NSMutableArray * cards; // of CGCard
 
@@ -52,14 +52,14 @@ static const int COST_TO_CHOOSE = 1;
 
 - (void)chooseCardAtIndex:(NSUInteger)index
 {
-    self.pointsForLastMove = 0;
+    self.pointsForCurrentMove = 0;
     CGCard * card = [self cardAtIndex:index];
     
     if (!card.isMatched) {
         if (card.isChosen) {
             card.chosen = NO;
         } else {
-            // match against other chosen cards
+            // Take all the chosen cards which are not matched into an array
             NSMutableArray * chosenCards = [[NSMutableArray alloc] init];
             for (CGCard * otherCard in self.cards) {
                 if (otherCard.isChosen && !otherCard.isMatched) {
@@ -67,15 +67,18 @@ static const int COST_TO_CHOOSE = 1;
                     if ([chosenCards count] == (self.matchMode - 1)) break;
                 }
             }
+            // Check matches if number of chosen cards is according to match mode
             if ([chosenCards count] == (self.matchMode - 1)) {
+                // Match against other chosen cards
                 int matchScore = [card match:chosenCards];
+                // Set cards matched and chosen according to the match result
                 card.matched = matchScore;
                 for (CGCard * chosenCard in chosenCards) {
                     chosenCard.matched = matchScore;
                     chosenCard.chosen = matchScore;
                 }
-                self.pointsForLastMove = matchScore ? (matchScore * MATCH_BONUS) : (self.matchMode * -MISMATCH_PENALTY);
-                self.score += self.pointsForLastMove;
+                self.pointsForCurrentMove = matchScore ? (matchScore * MATCH_BONUS) : (self.matchMode * -MISMATCH_PENALTY);
+                self.score += self.pointsForCurrentMove;
             }
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;

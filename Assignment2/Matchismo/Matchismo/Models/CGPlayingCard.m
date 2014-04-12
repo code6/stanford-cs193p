@@ -24,6 +24,7 @@
         CGPlayingCard * firstOfOtherCards = [otherCards firstObject];
         NSMutableArray * mutableOtherCards = [NSMutableArray arrayWithArray:otherCards];
         [mutableOtherCards removeObject:firstOfOtherCards];
+        // Result is the sum of the matches between all chosen cards
         return [self match:@[firstOfOtherCards]] + [self match:mutableOtherCards] + [firstOfOtherCards match:mutableOtherCards];
     }
     return score;

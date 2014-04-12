@@ -19,7 +19,7 @@
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (CGCard *)cardAtIndex:(NSUInteger)index;
 
-@property (nonatomic, readonly) NSInteger pointsForLastMove;
+@property (nonatomic, readonly) NSInteger pointsForCurrentMove;
 @property (nonatomic, readonly) NSInteger score;
 //@property (nonatomic, readonly) NSString * result
 /*
