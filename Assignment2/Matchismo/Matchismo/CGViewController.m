@@ -115,11 +115,11 @@
         }
         result = self.chosenCardsContents;
         if (self.game.pointsForLastMove > 0) {
-            result = [NSString stringWithFormat:@"Matched %@ for %d points!", self.chosenCardsContents, self.game.pointsForLastMove];
+            result = [NSString stringWithFormat:@"Matched %@ for %ld points!", self.chosenCardsContents, (long)self.game.pointsForLastMove];
             self.chosenCardsContents = nil;
         }
         else if (self.game.pointsForLastMove < 0) {
-            result = [NSString stringWithFormat:@"%@ don't match! Penalty: %d points", self.chosenCardsContents, self.game.pointsForLastMove];
+            result = [NSString stringWithFormat:@"%@ don't match! Penalty: %ld points", self.chosenCardsContents, (long)self.game.pointsForLastMove];
             self.chosenCardsContents = self.lastCardChosen.contents.mutableCopy;
         }
     }
