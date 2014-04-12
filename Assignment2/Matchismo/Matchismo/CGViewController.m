@@ -17,12 +17,20 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *matchModeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
 @property (strong, nonatomic) NSMutableString * chosenCardsContents;
 @property (weak, nonatomic) CGCard * currentChosenCard;
+@property (strong, nonatomic) NSMutableArray * history;
 
 @end
 
 @implementation CGViewController
+
+- (NSMutableArray *)history
+{
+    if (!_history) _history = [[NSMutableArray alloc] init];
+    return _history;
+}
 
 - (NSMutableString *)chosenCardsContents
 {
@@ -42,12 +50,26 @@
                                                                        usingDeck:[self createDeck]];
     newGame.matchMode = self.matchModeSegmentedControl.selectedSegmentIndex == 0 ? 2 : 3;
     self.chosenCardsContents = nil;
+    self.history = nil;
     return newGame;
 }
 
 - (CGDeck *)createDeck
 {
     return [[CGPlayingCardDeck alloc] init];
+}
+
+- (IBAction)slideHistory:(UISlider *)sender
+{
+    
+    [self.historySlider setValue:(int) roundf(self.historySlider.value) animated:NO];
+    [self updateResults];
+}
+
+- (void)updateResults
+{
+    self.resultLabel.text = (NSString *)self.history[(int)self.historySlider.value];
+    self.resultLabel.textColor = (self.historySlider.value == ([self.history count] - 1)) ? [UIColor whiteColor] : [UIColor lightGrayColor];
 }
 
 - (IBAction)changeMatchMode:(UISegmentedControl *)sender
@@ -58,14 +80,12 @@
 
 - (IBAction)deal:(UIButton *)sender
 {
-    self.matchModeSegmentedControl.enabled = YES;
     self.game = [self newGame];
     [self updateUI];
 }
 
 - (IBAction)touchCardButton:(UIButton *)button
 {
-    self.matchModeSegmentedControl.enabled = NO;
     NSUInteger chosenButtonIndex = [self.cardButtons indexOfObject:button];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
@@ -73,7 +93,12 @@
 
 - (void)updateUI
 {
-    self.resultLabel.text = [self titleForResultOfCurrentMove];
+    [self.history addObject:[self titleForResultOfCurrentMove]];
+    self.matchModeSegmentedControl.enabled = [self.history count] == 1;
+    self.historySlider.enabled = [self.history count] > 1;
+    self.historySlider.maximumValue = ([self.history count] - 1);
+    self.historySlider.value = self.historySlider.maximumValue;
+    [self updateResults];
     for (UIButton * cardButton in self.cardButtons) {
         NSUInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         CGCard * card = [self.game cardAtIndex:cardButtonIndex];
@@ -118,12 +143,16 @@
         if (self.game.pointsForCurrentMove > 0) {
             result = [NSString stringWithFormat:@"Matched %@ for %ld points!", self.chosenCardsContents, (long)self.game.pointsForCurrentMove];
             self.chosenCardsContents = nil;
-        }
-        else if (self.game.pointsForCurrentMove < 0) {
+        } else if (self.game.pointsForCurrentMove < 0) {
             result = [NSString stringWithFormat:@"%@ don't match! Penalty: %ld points", self.chosenCardsContents, (long)self.game.pointsForCurrentMove];
             // Because it was cleared, so put the current chosen card back there
             self.chosenCardsContents = self.currentChosenCard.contents.mutableCopy;
+        } else {
+            result = [@"Chose: " stringByAppendingString:self.chosenCardsContents];
         }
+    }
+    else {
+        result = @"No card chosen";
     }
     // If there's no card chosen, then clear the label
     return result;
