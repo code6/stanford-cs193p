@@ -3,7 +3,7 @@
 //  Matchismo
 //
 //  Created by Jobert Sá on 4/7/14.
-//  Copyright (c) 2014 CS193p. All rights reserved.
+//  Copyright (c) 2014 http://codespark.co <*> codespark. All rights reserved.
 //
 
 #import "CGPlayingCard.h"
@@ -13,19 +13,21 @@
 - (int)match:(NSArray *)otherCards
 {
     int score = 0;
-    if ([otherCards count] == 1) {
-        CGPlayingCard * otherCard = [otherCards firstObject];
-        if (otherCard.rank == self.rank) {
-            score = 4;
-        } else if ([otherCard.suit isEqualToString:self.suit]) {
-            score = 1;
+    id otherCardsFirstObject = [otherCards firstObject];
+    if ([otherCardsFirstObject isKindOfClass:[CGPlayingCard class]]) {
+        CGPlayingCard * otherCard = otherCardsFirstObject;
+        if ([otherCards count] == 1) {
+            if (otherCard.rank == self.rank) {
+                score = 4;
+            } else if ([otherCard.suit isEqualToString:self.suit]) {
+                score = 1;
+            }
+        } else {
+            NSMutableArray * mutableOtherCards = [NSMutableArray arrayWithArray:otherCards];
+            [mutableOtherCards removeObject:otherCard];
+            // Result is the sum of the matches between all chosen cards
+            return [self match:@[otherCard]] + [self match:mutableOtherCards] + [otherCard match:mutableOtherCards];
         }
-    } else {
-        CGPlayingCard * firstOfOtherCards = [otherCards firstObject];
-        NSMutableArray * mutableOtherCards = [NSMutableArray arrayWithArray:otherCards];
-        [mutableOtherCards removeObject:firstOfOtherCards];
-        // Result is the sum of the matches between all chosen cards
-        return [self match:@[firstOfOtherCards]] + [self match:mutableOtherCards] + [firstOfOtherCards match:mutableOtherCards];
     }
     return score;
 }

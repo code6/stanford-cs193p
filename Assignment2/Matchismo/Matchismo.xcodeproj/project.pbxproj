@@ -231,7 +231,7 @@
 			attributes = {
 				CLASSPREFIX = CG;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = CS193p;
+				ORGANIZATIONNAME = "http://codespark.co <*> codespark";
 				TargetAttributes = {
 					7D409DD618F2088F0030C4D3 = {
 						TestTargetID = 7D409DB518F2088E0030C4D3;

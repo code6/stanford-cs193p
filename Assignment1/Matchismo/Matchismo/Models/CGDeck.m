@@ -3,7 +3,7 @@
 //  Matchismo
 //
 //  Created by Jobert Sá on 4/7/14.
-//  Copyright (c) 2014 CS193p. All rights reserved.
+//  Copyright (c) 2014 http://codespark.co <*> codespark. All rights reserved.
 //
 
 #import "CGDeck.h"
