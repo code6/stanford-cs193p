@@ -397,14 +397,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGm-Em-qYc">
-                                <rect key="frame" x="19" y="440" width="105" height="21"/>
+                                <rect key="frame" x="19" y="405" width="105" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5r8-1a-xsl">
-                                <rect key="frame" x="261" y="436" width="40" height="30"/>
+                                <rect key="frame" x="261" y="405" width="40" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <state key="normal" title="Deal">
@@ -415,20 +415,8 @@
                                     <action selector="deal:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qCb-Jf-xMc"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gga-Z3-jfC">
-                                <rect key="frame" x="132" y="437" width="120" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="2-card"/>
-                                    <segment title="3-card"/>
-                                </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="changeMatchMode:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Oif-Ki-epT"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a card to start" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="282" translatesAutoresizingMaskIntoConstraints="NO" id="Pxw-3e-w8C">
-                                <rect key="frame" x="20" y="378" width="282" height="54"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a card to start" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" preferredMaxLayoutWidth="282" translatesAutoresizingMaskIntoConstraints="NO" id="Pxw-3e-w8C">
+                                <rect key="frame" x="20" y="375" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -454,7 +442,6 @@
                     <tabBarItem key="tabBarItem" title="Item" id="QEa-LY-5Zc"/>
                     <connections>
                         <outlet property="historySlider" destination="Og6-3h-l3b" id="xlS-rR-WiI"/>
-                        <outlet property="matchModeSegmentedControl" destination="Gga-Z3-jfC" id="39X-KT-any"/>
                         <outlet property="resultLabel" destination="Pxw-3e-w8C" id="4Ho-VB-s71"/>
                         <outlet property="scoreLabel" destination="rGm-Em-qYc" id="Fb5-1t-mn8"/>
                         <outletCollection property="cardButtons" destination="bbL-g6-bqU" id="Psf-3i-VrA"/>
